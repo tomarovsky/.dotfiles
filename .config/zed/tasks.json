@@ -1,0 +1,67 @@
+[
+    {
+        "label": "LazyGit",
+        "command": "lazygit",
+        "use_new_terminal": false,
+        "reveal_target": "center",
+        "allow_concurrent_runs": false,
+        "env": {
+            "EDITOR": "zed -w",
+            "VISUAL": "zed -w",
+        },
+        "reveal": "always",
+        "hide": "on_success",
+        "shell": "system",
+    },
+    {
+        "label": "LazyGit file history",
+        "command": "lazygit",
+        "args": ["-f", "\"$ZED_FILE\""],
+        "hide": "on_success",
+        "use_new_terminal": true,
+        "allow_concurrent_runs": false,
+        "reveal_target": "center",
+    },
+    {
+        "label": "snakefmt: all files",
+        "command": "mamba run -n snakemake snakefmt -l 150 $ZED_WORKTREE_ROOT}",
+        "use_new_terminal": false,
+        "allow_concurrent_runs": false,
+        "reveal": "always",
+    },
+    {
+        "label": "snakefmt: format file",
+        "command": "mamba run -n snakemake snakefmt -l 150 $ZED_FILE",
+        "use_new_terminal": false,
+        "allow_concurrent_runs": false,
+        "reveal": "always",
+    },
+    {
+        "label": "snakemake: run",
+        "command": "mamba run -n snakemake snakemake",
+    },
+    {
+        "label": "snakemake: force run rule '$ZED_SYMBOL'",
+        "command": "snakemake",
+        "args": ["-R", "$ZED_SYMBOL"],
+        "tags": ["snakemake-force-run-rule"],
+    },
+    {
+        "label": "snakemake: export SVG dag",
+        "command": "snakemake --dag | dot -Tsvg > ${ZED_STEM}-dag.svg",
+    },
+    {
+        "label": "yazi",
+        "command": "yazi",
+        "hide": "on_success",
+        "reveal_target": "center",
+        "env": {
+            "EDITOR": "zed",
+            "VISUAL": "zed",
+        },
+        "show_summary": false,
+        "show_command": false,
+        "allow_concurrent_runs": true,
+        "use_new_terminal": true,
+    },
+]
