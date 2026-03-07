@@ -134,9 +134,6 @@
             // Search
             "space s s": ["workspace::SendKeystrokes", "g s"],
             "space s S": "project_symbols::Toggle",
-            // Project search
-            "space s g": "workspace::NewSearch",
-            "space /": "workspace::NewSearch",
             // File explorer
             "space e": "workspace::ToggleLeftDock",
             // Git

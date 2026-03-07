@@ -101,9 +101,6 @@
     },
     "terminal": {
         "copy_on_select": true,
-        "env": {
-            "EDITOR": "zed --wait",
-        },
         "font_family": "JetBrains Mono",
         "detect_venv": {
             "on": {
