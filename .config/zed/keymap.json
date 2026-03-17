@@ -14,7 +14,7 @@
         },
     },
 
-    // Ctrl+V paste in Vim insert mode
+    // Ctrl+V paste
     {
         "context": "Editor && vim_mode == insert",
         "bindings": {
@@ -35,13 +35,6 @@
             "shift-tab": ["editor::Outdent", "vim::Reindent"],
         },
     },
-    // Terminal
-    {
-        "context": "Workspace",
-        "bindings": {
-            "ctrl-/": "workspace::ToggleBottomDock",
-        },
-    },
     // Window's navigation
     {
         "context": "Dock || Terminal || Editor",
@@ -59,6 +52,7 @@
             "shift-l": "pane::ActivateNextItem",
             "shift-h": "pane::ActivatePreviousItem",
             "ctrl-l": "terminal::Clear",
+            "ctrl-v": "terminal::Paste",
         },
     },
     // Project panel
@@ -87,18 +81,11 @@
         },
     },
     {
-        "context": "GitPanel",
-        "bindings": {
-            "q": "git_panel::Close",
-        },
-    },
-    {
         "context": "AgentPanel",
         "bindings": {
             "ctrl-\\": "workspace::ToggleRightDock",
         },
     },
-
     // Empty pane, set of keybindings that are available when there is no active editor
     {
         "context": "EmptyPane || SharedScreen",
@@ -122,8 +109,6 @@
             // LSP & Code actions
             "space c r": "editor::Rename",
             "space c a": "editor::ToggleCodeActions",
-            // "space s d": "diagnostics::Deploy",
-            // "space s s": "outline::Toggle",
             // Find
             "space f p": "projects::OpenRecent",
             "space f f": "file_finder::Toggle",
@@ -139,16 +124,14 @@
             // Git
             "space g g": "task::Spawn",
             "space l g": ["task::Spawn", { "task_name": "lazygit" }],
-            "space g d": "git::Diff",
-            "space g h": "editor::ToggleSelectedDiffHunks",
-            "space g e": "editor::ExpandAllDiffHunks",
-            "space g c": "editor::CollapseAllDiffHunks",
-            "space g s": "git::ToggleStaged",
-            "space g S": "git::StageFile",
-            "space g r": "git::Restore",
-            "space g R": "git::RestoreFile",
-            "space g b": "git::Blame",
-            "space g G": "git_panel::ToggleFocus",
+            // "space g d": "git::Diff",
+            // "space g h": "editor::ToggleSelectedDiffHunks",
+            // "space g e": "editor::ExpandAllDiffHunks",
+            // "space g c": "editor::CollapseAllDiffHunks",
+            // "space g s": "git::ToggleStaged",
+            // "space g S": "git::StageFile",
+            // "space g r": "git::Restore",
+            // "space g R": "git::RestoreFile",
             // Toggle inlay hints
             "space u i": "editor::ToggleInlayHints",
             // Toggle soft wrap
@@ -252,12 +235,6 @@
         "bindings": {
             "s": "vim::PushSneak",
             "S": "vim::PushSneakBackward",
-        },
-    },
-    {
-        "context": "vim_operator == a || vim_operator == i || vim_operator == cs",
-        "bindings": {
-            "b": "vim::AnyBrackets",
         },
     },
     // Cell mode for jupyter

@@ -1,4 +1,4 @@
-source /usr/share/vim/vim91/defaults.vim
+source /usr/share/vim/vim92/defaults.vim
 
 set mouse-=a
 set number

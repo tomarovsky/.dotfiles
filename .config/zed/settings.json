@@ -45,6 +45,12 @@
         "Snakemake": ["Snakefile", "*.smk"],
         "Dockerfile": ["Dockerfile", "Dockerfile.*"],
         "JSON": ["json", "jsonc", "*.code-snippets"],
+        "Git Attributes": ["**/{git,.git/info}/attributes"],
+        "Git Config": [
+            "*.gitconfig",
+            "**/{git,.git/modules,.git/modules/*}/config",
+        ],
+        "Git Ignore": ["**/{git,.git}/ignore", "**/.git/info/exclude"],
     },
     "languages": {
         "Python": {
@@ -138,6 +144,11 @@
     },
     "lsp_document_colors": "background",
     "vim_mode": true,
-    "vim": { "use_system_clipboard": "always" },
+    "vim": {
+        "use_system_clipboard": "always",
+        "highlight_on_yank_duration": 50,
+        "use_smartcase_find": true,
+    },
+
     "which_key": { "enabled": true },
 }

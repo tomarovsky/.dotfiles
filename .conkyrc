@@ -78,7 +78,7 @@ ${voffset 1}${color1}Uptime :$alignr${color3} $uptime
 # NETWORK
 #------------+
 ${voffset 6}${color1}${font :size=12:bold}NETWORK ${hr 1}${font}
-${voffset 3}${color1}Location: $alignr${color3}${execi 60 curl ifconfig.co/city 2>/dev/null | tail }, ${execi 60 curl ifconfig.co/country 2>/dev/null | tail }${color2}
+${voffset 3}${color1}Location: $alignr${color3}${execi 60 curl ifconfig.co/country 2>/dev/null | tail }${color2}
 ${voffset 1}${color1}Wi-fi Network: ${alignr}${color3}${wireless_essid wlp2s0}
 ${voffset 1}${color1}Public IP: ${alignr}${color3}${execi 60 curl ifconfig.co 2>/dev/null | tail }${color2}
 ${voffset 1}${color1}Wi-fi IP: ${alignr}${color3}${addr wlp2s0}
