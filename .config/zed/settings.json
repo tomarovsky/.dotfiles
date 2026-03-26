@@ -124,6 +124,9 @@
         "**/.ruff_cache",
     ],
     "file_scan_inclusions": [".env"],
+    "git_panel": {
+        "file_icons": true,
+    },
     "project_panel": {
         "default_width": 300,
         "dock": "left",
