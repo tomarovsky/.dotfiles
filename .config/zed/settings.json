@@ -8,6 +8,7 @@
 // command palette
 
 {
+    "diff_view_style": "unified",
     "telemetry": { "diagnostics": true, "metrics": false },
     "theme": {
         "mode": "dark",
@@ -43,7 +44,7 @@
     "show_edit_predictions": true,
     "file_types": {
         "Snakemake": ["Snakefile", "*.smk"],
-        "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+        "Dockerfile": ["Dockerfile", "Dockerfile.*", "*.def"],
         "JSON": ["json", "jsonc", "*.code-snippets"],
         "Git Attributes": ["**/{git,.git/info}/attributes"],
         "Git Config": [
@@ -100,7 +101,6 @@
         },
     },
     "tab_size": 4,
-    "scrollbar": { "show": "never" },
     "tabs": {
         "file_icons": true,
         "git_status": true,
