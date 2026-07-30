@@ -1,5 +1,3 @@
-source /usr/share/vim/vim92/defaults.vim
-
 set mouse-=a
 set number
 set clipboard=unnamedplus
