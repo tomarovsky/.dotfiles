@@ -1,13 +1,24 @@
 #!/bin/bash
+# URL-decode (%20 -> space, etc.)
+urldecode() {
+    local s="${1//+/ }"
+    printf '%b' "${s//%/\\x}"
+}
 
-# Get last copied path from clipboard
-clipboard_content=$(xclip -o -selection clipboard 2>/dev/null)
+clipboard_content=$(wl-paste -n 2>/dev/null)
 
-# Check if clipboard is empty
+# Check for empty clipboard
 if [ -z "$clipboard_content" ]; then
     notify-send "SVG to PNG" "Clipboard is empty"
     exit 1
 fi
+
+# Normalize path: first line, strip file://, URL-decode, trim whitespace
+clipboard_content=$(printf '%s' "$clipboard_content" | head -n1)
+clipboard_content="${clipboard_content#file://}"
+clipboard_content=$(urldecode "$clipboard_content")
+clipboard_content="${clipboard_content#"${clipboard_content%%[![:space:]]*}"}"
+clipboard_content="${clipboard_content%"${clipboard_content##*[![:space:]]}"}"
 
 # Verify it's an existing SVG file
 if [[ "$clipboard_content" != *.svg ]] || [ ! -f "$clipboard_content" ]; then
@@ -27,7 +38,7 @@ inkscape "$clipboard_content" \
 
 # Show result notification
 if [ $? -eq 0 ]; then
-    notify-send "SVG to PNG" "Conversion successful"
+    notify-send "SVG to PNG" "Conversion successful: $(basename "$output_path")"
 else
     notify-send "SVG to PNG" "Conversion failed"
 fi
