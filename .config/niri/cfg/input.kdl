@@ -3,6 +3,8 @@
 
 input {
     keyboard {
+        repeat-delay 450
+        repeat-rate 50
         xkb {
             layout "us,ru"
             options "caps:super,grp:alt_shift_toggle"
