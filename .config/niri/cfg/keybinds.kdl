@@ -7,53 +7,41 @@ binds {
 
     // ─────────────── Applications ───────────────
     Mod+Return  hotkey-overlay-title="Terminal: Kitty"       { spawn "kitty"; }
-    Mod+Space   hotkey-overlay-title="App Launcher: Noctalia"    { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+D       hotkey-overlay-title="App Launcher: Noctalia"    { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+E       hotkey-overlay-title="File Manager: Dolphin"     { spawn "dolphin"; }
     Mod+B       hotkey-overlay-title="Browser: Google Chrome"    { spawn "google-chrome-stable"; }
     Mod+V       hotkey-overlay-title="Clipboard: Noctalia"       { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
 
     // ─────────────── FOCUS · columns (←/→) ───────────────
-    Mod+A     { focus-column-left; }
     Mod+H     { focus-column-left; }
     Mod+Left  { focus-column-left; }
-    Mod+D     { focus-column-right; }
     Mod+L     { focus-column-right; }
     Mod+Right { focus-column-right; }
 
     // ─────────────── FOCUS · windows in column (↑/↓) ───────────────
-    Mod+W    { focus-window-up; }
     Mod+K    { focus-window-up; }
     Mod+Up   { focus-window-up; }
-    Mod+S    { focus-window-down; }
     Mod+J    { focus-window-down; }
     Mod+Down { focus-window-down; }
 
     // ─────────────── MOVE · columns / windows (Mod+Ctrl) ───────────────
-    Mod+Ctrl+A     { move-column-left; }
     Mod+Ctrl+H     { move-column-left; }
     Mod+Ctrl+Left  { move-column-left; }
-    Mod+Ctrl+D     { move-column-right; }
     Mod+Ctrl+L     { move-column-right; }
     Mod+Ctrl+Right { move-column-right; }
-    Mod+Ctrl+W     { move-window-up; }
     Mod+Ctrl+K     { move-window-up; }
     Mod+Ctrl+Up    { move-window-up; }
-    Mod+Ctrl+S     { move-window-down; }
     Mod+Ctrl+J     { move-window-down; }
     Mod+Ctrl+Down  { move-window-down; }
 
     // ─────────────── WORKSPACES · focus (Mod+Shift, ↑/↓) ───────────────
-    Mod+Shift+W    { focus-workspace-up; }
     Mod+Shift+K    { focus-workspace-up; }
     Mod+Shift+Up   { focus-workspace-up; }
-    Mod+Shift+S    { focus-workspace-down; }
     Mod+Shift+J    { focus-workspace-down; }
     Mod+Shift+Down { focus-workspace-down; }
 
     // move focused column to workspace up/down
-    Mod+Ctrl+Shift+W  { move-column-to-workspace-up; }
     Mod+Ctrl+Shift+K  { move-column-to-workspace-up; }
-    Mod+Ctrl+Shift+S  { move-column-to-workspace-down; }
     Mod+Ctrl+Shift+J  { move-column-to-workspace-down; }
 
     Mod+Tab { focus-workspace-previous; }

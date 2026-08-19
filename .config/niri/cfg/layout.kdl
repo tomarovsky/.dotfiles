@@ -1,5 +1,11 @@
     layout {
         gaps 10 // Gap between windows
+
+        focus-ring {
+            width 1
+            active-color "#fabd2f"
+        }
+
         center-focused-column "never" // Don’t auto-center focused column
 
         background-color "transparent" // <- needed for noctalia-shell to set wallpaper
