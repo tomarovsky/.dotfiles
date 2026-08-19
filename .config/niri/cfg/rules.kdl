@@ -1,0 +1,80 @@
+// Spawn workspaces
+workspace "1"
+workspace "2"
+workspace "3"
+workspace "4"
+workspace "5"
+workspace "6"
+workspace "7"
+workspace "8"
+
+    window-rule {
+        geometry-corner-radius 0 // Set every window radius to 20
+        clip-to-geometry true
+    }
+
+    window-rule {
+        background-effect {
+          blur true
+          xray false
+        }
+    }
+
+    // Floating Noctalia settings window.
+    window-rule {
+        match app-id="dev.noctalia.Noctalia"
+        open-floating true
+        default-column-width { fixed 1080; }
+        default-window-height { fixed 920; }
+    }
+
+    window-rule {
+        match app-id="com.gabm.satty"
+        open-floating true
+        open-focused true
+    }
+    
+    window-rule {
+        match app-id="Zed"
+        tiled-state true
+    }
+
+    window-rule {
+        match app-id="steam"
+        exclude title=r#"^[Ss]team$"#
+        open-floating true
+    }
+
+    window-rule {
+       match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+       default-floating-position x=10 y=10 relative-to="bottom-right"
+       open-focused false
+    }
+
+    layer-rule {
+        match namespace="^noctalia-backdrop"
+        place-within-backdrop true
+    }
+
+    layer-rule {
+        match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+        background-effect {
+          xray false
+        }
+    }
+
+    window-rule {
+      match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+      open-floating true
+    }
+
+    window-rule {
+      match app-id=r#"google-chrome-stable$"# title="^Picture-in-Picture$"
+      open-floating true
+    }
+
+    layer-rule {
+        match namespace="^noctalia-backdrop"
+        place-within-backdrop true
+    }
+
