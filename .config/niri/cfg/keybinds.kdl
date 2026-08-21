@@ -19,10 +19,10 @@ binds {
     Mod+Right { focus-column-right; }
 
     // ─────────────── FOCUS · windows in column (↑/↓) ───────────────
-    Mod+K    { focus-window-up; }
-    Mod+Up   { focus-window-up; }
-    Mod+J    { focus-window-down; }
-    Mod+Down { focus-window-down; }
+    Mod+Shift+K    { focus-window-up; }
+    Mod+Shift+Up   { focus-window-up; }
+    Mod+Shift+J    { focus-window-down; }
+    Mod+Shift+Down { focus-window-down; }
 
     // ─────────────── MOVE · columns / windows (Mod+Ctrl) ───────────────
     Mod+Ctrl+H     { move-column-left; }
@@ -35,10 +35,10 @@ binds {
     Mod+Ctrl+Down  { move-window-down; }
 
     // ─────────────── WORKSPACES · focus (Mod+Shift, ↑/↓) ───────────────
-    Mod+Shift+K    { focus-workspace-up; }
-    Mod+Shift+Up   { focus-workspace-up; }
-    Mod+Shift+J    { focus-workspace-down; }
-    Mod+Shift+Down { focus-workspace-down; }
+    Mod+K    { focus-workspace-up; }
+    Mod+Up   { focus-workspace-up; }
+    Mod+J    { focus-workspace-down; }
+    Mod+Down { focus-workspace-down; }
 
     // move focused column to workspace up/down
     Mod+Ctrl+Shift+K  { move-column-to-workspace-up; }
