@@ -6,7 +6,7 @@ binds {
     Ctrl+Alt+Delete                     { quit; }   // quits niri
 
     // ─────────────── Applications ───────────────
-    Mod+Return  hotkey-overlay-title="Terminal: Kitty"       { spawn "kitty"; }
+    Mod+Return  hotkey-overlay-title="Terminal: Kitty"           { spawn "kitty"; }
     Mod+D       hotkey-overlay-title="App Launcher: Noctalia"    { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+E       hotkey-overlay-title="File Manager: Dolphin"     { spawn "dolphin"; }
     Mod+B       hotkey-overlay-title="Browser: Google Chrome"    { spawn "google-chrome-stable"; }
@@ -97,11 +97,10 @@ binds {
     // ─────────────── Overview ───────────────
     Mod+O repeat=false { toggle-overview; }
 
-    // ─────────────── Screenshots / recording ───────────────
-    Print { spawn "noctalia" "msg" "screenshot-region"; }
-    Ctrl+Alt+Backslash  repeat=false  hotkey-overlay-title="Toggle call recording" {
-        spawn-sh "~/.local/bin/call-record.sh"
-    }
+    // ─────────────── Others ───────────────
+    Print               { spawn "noctalia" "msg" "screenshot-region"; }
+    Ctrl+Alt+K          repeat=false  hotkey-overlay-title="Toggle wshowkeys"       { spawn-sh "~/.local/bin/toggle-wshowkeys.sh"; }
+    Ctrl+Alt+Backslash  repeat=false  hotkey-overlay-title="Toggle call recording"  { spawn-sh "~/.local/bin/call-record.sh"; }
 
     // ─────────────── Media controls ───────────────
     XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }

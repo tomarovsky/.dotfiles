@@ -1,13 +1,3 @@
-// Spawn workspaces
-// workspace "1"
-// workspace "2"
-// workspace "3"
-// workspace "4"
-// workspace "5"
-// workspace "6"
-// workspace "7"
-// workspace "8"
-
     window-rule {
         geometry-corner-radius 0 // Set every window radius to 20
         clip-to-geometry true
