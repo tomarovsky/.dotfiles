@@ -3,4 +3,4 @@
 
     spawn-at-startup "noctalia"
     spawn-at-startup "xwayland-satellite"
-    spawn-at-startup "conky"
+    spawn-at-startup "sh -c 'sleep 2; conky'"
