@@ -3,4 +3,3 @@
 
     spawn-at-startup "noctalia"
     spawn-at-startup "xwayland-satellite"
-    spawn-at-startup "nautilus --gapplication-service"
