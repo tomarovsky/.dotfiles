@@ -63,6 +63,11 @@
       open-floating true
     }
 
+    window-rule {
+      match app-id="Zotero" title="Citation Dialog"
+      open-floating true
+    }
+
     layer-rule {
         match namespace="^noctalia-backdrop"
         place-within-backdrop true
