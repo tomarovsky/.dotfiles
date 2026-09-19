@@ -2,12 +2,23 @@
 opacity = 1.0
 
 [font]
-builtin_box_drawing = true
-normal.family = "JetBrains Mono"
-bold.family = "JetBrains Mono"
-italic.family = "JetBrains Mono"
-bold_italic.family = "JetBrains Mono"
-size = 12
+size = 12.0
+
+[font.normal]
+family = "JetBrains Mono"
+style = "Regular"
+
+[font.bold]
+family = "JetBrains Mono"
+style = "Bold"
+
+[font.italic]
+family = "JetBrains Mono"
+style = "Italic"
+
+[font.bold_italic]
+family = "JetBrains Mono"
+style = "Bold Italic"
 
 [cursor.style]
 shape = "Block"
