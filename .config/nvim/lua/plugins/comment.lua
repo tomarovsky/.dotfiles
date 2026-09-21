@@ -7,6 +7,7 @@ return {
                 if vim.bo.commentstring == "" then
                     return "#%s"
                 end
+                return vim.bo.commentstring
             end,
         })
     end,
