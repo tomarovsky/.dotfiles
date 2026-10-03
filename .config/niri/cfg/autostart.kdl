@@ -2,5 +2,4 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-sh-at-startup
 
     spawn-at-startup "noctalia"
-    spawn-at-startup "xwayland-satellite"
     spawn-at-startup "conky"
