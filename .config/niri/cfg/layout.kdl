@@ -3,7 +3,8 @@
 
         focus-ring {
             width 1
-            active-color "#fabd2f"
+            active-color "#B8BB26"
+            // active-color "#fabd2f"
         }
 
         center-focused-column "never" // Don’t auto-center focused column
