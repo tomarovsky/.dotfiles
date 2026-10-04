@@ -1,0 +1,412 @@
+[
+  // =========================
+  // GLOBAL KEYBINDINGS
+  // =========================
+  {
+    "bindings": {
+      // pane navigation
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      // toggle terminal
+      "ctrl-\\": "workspace::ToggleBottomDock",
+    },
+  },
+
+  // =========================
+  // EDITOR KEYBINDINGS
+  // =========================
+  {
+    "context": "Editor && VimControl",
+    "bindings": {
+      "ctrl-c": ["workspace::SendKeystrokes", "escape"],
+    },
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      // navigate wrapped lines
+      "j": ["vim::Down", { "display_lines": true }],
+      "k": ["vim::Up", { "display_lines": true }],
+
+      // save file
+      "ctrl-s": "workspace::Save",
+      "ctrl-shift-s": "workspace::SaveWithoutFormat",
+
+      // split pane
+      "space |": "pane::SplitRight",
+      "space _": "pane::SplitDown",
+      "space x": "pane::CloseActiveItem",
+
+      // LSP related
+      "shift-k": "editor::Hover",
+      "space f": "editor::Format",
+      "space c a": "editor::ToggleCodeActions",
+      "space r n": "editor::Rename",
+      "g r": "editor::FindAllReferences",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
+
+      // git hunk navigation
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPreviousHunk",
+      "space g s": "git::ToggleStaged",
+      "space g d": "git::Diff",
+      "space g r": "git::Restore",
+
+      // left dock
+      "space e": "pane::RevealInProjectPanel",
+      "\\": "pane::RevealInProjectPanel",
+      "space g p": "git_panel::ToggleFocus",
+
+      // lazygit
+      "space g g": [
+        "task::Spawn",
+        { "task_name": "lazygit", "reveal_target": "center" },
+      ],
+
+      // github dash
+      "space g h": [
+        "task::Spawn",
+        { "task_name": "dash", "reveal_target": "center" },
+      ],
+
+      // move between tabs
+      "space o": "tab_switcher::Toggle",
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+      "shift-q": "pane::CloseActiveItem",
+
+      // AI related
+      "space a a": "agent::ToggleFocus",
+      "space a i": "assistant::InlineAssist",
+
+      // searches
+      "space s f": "file_finder::Toggle",
+      "space s g": "pane::DeploySearch",
+      "space space": "outline::Toggle",
+      "space s s": "project_symbols::Toggle",
+
+      // open recent project
+      "space s p": ["projects::OpenRecent", { "create_new_window": false }],
+
+      // auto center on scrolls / jumps
+      "ctrl-shift-u": "vim::ScrollUp",
+      "ctrl-shift-d": "vim::ScrollDown",
+      "ctrl-u": ["workspace::SendKeystrokes", "ctrl-shift-u z z"],
+      "ctrl-d": ["workspace::SendKeystrokes", "ctrl-shift-d z z"],
+      "n": ["workspace::SendKeystrokes", "n z z"],
+      "shift-n": ["workspace::SendKeystrokes", "shift-n z z"],
+      "shift-g": ["workspace::SendKeystrokes", "shift-g z z"],
+      "g g": ["workspace::SendKeystrokes", "g g z z"],
+    },
+  },
+
+  // ctrl-enter in full editors: accept edit prediction instead of the
+  // default inline assist (inline assist lives on `space a i`)
+  {
+    "context": "!ContextEditor > (Editor && mode == full)",
+    "bindings": {
+      "ctrl-enter": "editor::AcceptEditPrediction",
+    },
+  },
+
+  // refactor rename
+  {
+    "context": "(Editor && mode == full) && renaming",
+    "bindings": {
+      "enter": "editor::ConfirmRename",
+      "ctrl-enter": "editor::ConfirmRename",
+    },
+  },
+
+  // =========================
+  // EMPTY PANE / SHARED SCREEN / KEY CONTEXT VIEW
+  // =========================
+  {
+    "context": "SharedScreen || KeyContextView || MarkdownPreview",
+    "bindings": {
+      "shift-q": "pane::CloseActiveItem",
+    },
+  },
+  {
+    "context": "EmptyPane || SharedScreen || KeyContextView",
+    "bindings": {
+      // searches
+      "space s f": "file_finder::Toggle",
+      "space s g": "pane::DeploySearch",
+      "space s s": "project_symbols::Toggle",
+      "space s p": ["projects::OpenRecent", { "create_new_window": false }],
+
+      // tabs
+      "space o": "tab_switcher::Toggle",
+      "shift-h": "pane::ActivatePreviousItem",
+      "shift-l": "pane::ActivateNextItem",
+
+      // left dock
+      "space e": "project_panel::ToggleFocus",
+      "\\": "project_panel::ToggleFocus",
+
+      // git
+      "space g p": "git_panel::ToggleFocus",
+      "space g g": [
+        "task::Spawn",
+        { "task_name": "lazygit", "reveal_target": "center" },
+      ],
+      "space g h": [
+        "task::Spawn",
+        { "task_name": "dash", "reveal_target": "center" },
+      ],
+
+      // AI
+      "space a a": "agent::ToggleFocus",
+    },
+  },
+
+  // =========================
+  // PANEL KEYBINDINGS
+  // =========================
+
+  // agent panel toggle
+  {
+    "context": "AgentPanel > Markdown",
+    "bindings": {
+      "space a a": "workspace::ToggleRightDock",
+    },
+  },
+  {
+    "context": "( AgentPanel > MessageEditor && MessageEditor > Editor ) || AgentPanel",
+    "bindings": {
+      "escape": "workspace::ToggleRightDock",
+    },
+  },
+
+  // close inline assist on ctrl+c
+  {
+    "context": "InlineAssistEditor",
+    "bindings": {
+      "ctrl-c": "editor::Cancel",
+    },
+  },
+
+  // project panel
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Trash", // to trash, recoverable
+      "D": "project_panel::Delete", // permanent delete
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "z": "project_panel::CollapseSelectedEntry",
+      "Z": "project_panel::CollapseAllEntries",
+      "shift-g": "menu::SelectLast",
+      "g g": "menu::SelectFirst",
+
+      // close project panel
+      "q": "workspace::ToggleLeftDock",
+      "\\": "workspace::ToggleLeftDock",
+      "space e": "workspace::ToggleLeftDock",
+      "escape": "workspace::ToggleLeftDock",
+
+      // searches
+      "space s f": "file_finder::Toggle",
+      "space s g": "pane::DeploySearch",
+      "space s p": ["projects::OpenRecent", { "create_new_window": false }],
+
+      // git
+      "space g p": "git_panel::ToggleFocus",
+      "space g g": [
+        "task::Spawn",
+        { "task_name": "lazygit", "reveal_target": "center" },
+      ],
+      "space g h": [
+        "task::Spawn",
+        { "task_name": "dash", "reveal_target": "center" },
+      ],
+    },
+  },
+
+  // git panel: file list
+  {
+    "context": "GitPanel && !CommitEditor",
+    "bindings": {
+      "q": "workspace::ToggleLeftDock",
+      "escape": "workspace::ToggleLeftDock",
+      "space g p": "workspace::ToggleLeftDock",
+    },
+  },
+
+  // terminal panel
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-shift-h": "pane::ActivatePreviousItem",
+      "ctrl-shift-l": "pane::ActivateNextItem",
+      "ctrl-shift-q": "pane::CloseActiveItem",
+      "ctrl-shift-x": "pane::CloseActiveItem",
+      "ctrl-shift-o": "workspace::NewTerminal",
+      "ctrl-shift-r": "terminal::RerunTask",
+
+      // give these back to the shell (backspace, newline, clear screen);
+      // ctrl-k still jumps up to the editor
+      "ctrl-h": ["terminal::SendKeystroke", "ctrl-h"],
+      "ctrl-j": ["terminal::SendKeystroke", "ctrl-j"],
+      "ctrl-l": ["terminal::SendKeystroke", "ctrl-l"],
+
+      // paste from system clipboard
+      "ctrl-v": "terminal::Paste",
+
+      // disable
+      "ctrl-enter": null,
+    },
+  },
+
+  // close project search on ctrl+c / esc
+  {
+    "context": "ProjectSearchBar > Editor",
+    "bindings": {
+      "ctrl-c": "pane::CloseActiveItem",
+      "escape": "pane::CloseActiveItem",
+    },
+  },
+
+  // =========================
+  // VIM/EDITOR MODE KEYBINDINGS
+  // =========================
+
+  // code action (vim operator)
+  {
+    "context": "Editor && vim_operator == c",
+    "bindings": {
+      "c": "vim::CurrentLine",
+      "a": "editor::ToggleCodeActions",
+    },
+  },
+
+  // completions: tab/enter keep their normal meaning, confirm explicitly
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "tab": "editor::Tab",
+      "enter": "editor::Newline",
+      "ctrl-enter": "editor::ConfirmCompletion",
+      "shift-enter": "editor::ConfirmCompletion",
+      "ctrl-y": "editor::ConfirmCompletion",
+    },
+  },
+
+  // code actions: same idea
+  {
+    "context": "Editor && showing_code_actions",
+    "bindings": {
+      "tab": "editor::Tab",
+      "enter": "editor::Newline",
+      "ctrl-enter": "editor::ConfirmCodeAction",
+      "shift-enter": "editor::ConfirmCodeAction",
+      "ctrl-y": "editor::ConfirmCodeAction",
+    },
+  },
+
+  // edit prediction (ctrl-enter is handled in the full-editor block above;
+  // see https://github.com/zed-industries/zed/issues/52559 and #40161)
+  {
+    "context": "Editor && edit_prediction && !showing_completions",
+    "bindings": {
+      "tab": "editor::Tab",
+      "enter": "editor::Newline",
+      "shift-enter": "editor::AcceptEditPrediction",
+    },
+  },
+
+  // normal + visual: surround (mini.surround style), explicit system clipboard yank
+  {
+    "context": "Editor && ( vim_mode == normal || vim_mode == visual ) && !VimWaiting && !VimObject",
+    "bindings": {
+      "g s a": "vim::PushAddSurrounds",
+      "g s d": "vim::PushDeleteSurrounds",
+      "g s r": "vim::PushChangeSurrounds",
+      "g y": ["workspace::SendKeystrokes", "\" + y"],
+    },
+  },
+
+  // normal: explicit system clipboard paste
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !VimObject",
+    "bindings": {
+      "g p": ["workspace::SendKeystrokes", "\" + p"],
+      "g P": ["workspace::SendKeystrokes", "\" + P"],
+    },
+  },
+
+  // visual: move lines, keep selection on indent, system clipboard paste
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+      ">": ["workspace::SendKeystrokes", "> g v"],
+      "<": ["workspace::SendKeystrokes", "< g v"],
+      "g p": ["workspace::SendKeystrokes", "\" + p"],
+      "g P": ["workspace::SendKeystrokes", "\" + P"],
+    },
+  },
+
+  // insert mode
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      // exit insert mode
+      "ctrl-c": "vim::NormalBefore",
+      "ctrl-[": "vim::NormalBefore",
+      "escape": "vim::NormalBefore",
+
+      "ctrl-x": null,
+      "ctrl-x ctrl-o": "editor::ShowCompletions",
+      "ctrl-x ctrl-a": null,
+      "ctrl-x ctrl-c": "editor::ShowEditPrediction",
+      "ctrl-x ctrl-l": "editor::ToggleCodeActions",
+      "ctrl-x ctrl-z": "editor::Cancel",
+
+      "ctrl-h": "editor::Backspace", // instead of pane navigation
+      "ctrl-w": "editor::DeleteToPreviousWordStart",
+      "ctrl-u": "editor::DeleteToBeginningOfLine",
+      "ctrl-t": "vim::Indent",
+      "ctrl-d": "vim::Outdent",
+      "ctrl-k": ["vim::PushDigraph", {}],
+
+      // paste from system clipboard; literal insert moved to ctrl-q
+      "ctrl-v": "editor::Paste",
+      "ctrl-shift-v": "editor::Paste",
+      "ctrl-q": ["vim::PushLiteral", {}],
+      "ctrl-shift-q": ["vim::PushLiteral", {}],
+
+      "ctrl-r": "vim::PushRegister",
+      "insert": "vim::ToggleReplace",
+      "ctrl-o": "vim::TemporaryNormal",
+      "ctrl-s": "editor::ShowSignatureHelp",
+    },
+  },
+
+  // sneak motion
+  {
+    "context": "vim_mode == normal || vim_mode == visual",
+    "bindings": {
+      "s": ["vim::PushSneak", {}],
+      "S": ["vim::PushSneakBackward", {}],
+    },
+  },
+
+  // bracket text objects (mini.ai style)
+  {
+    "context": "vim_operator == a || vim_operator == i || vim_operator == cs || vim_operator == sa",
+    "bindings": {
+      "b": "vim::MiniBrackets",
+      "q": "vim::MiniQuotes",
+    },
+  },
+]
